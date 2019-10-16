@@ -1,3 +1,4 @@
+import 'package:agora_flutter_demo/pages/call.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -19,6 +20,12 @@ class _IndexPageState extends State<IndexPage> {
         PermissionGroup.camera,
         PermissionGroup.microphone,
       ]);
+
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) {
+          return CallPage();
+        }
+      ));
     }
   }
 
