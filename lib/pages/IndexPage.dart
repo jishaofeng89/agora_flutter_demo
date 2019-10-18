@@ -23,7 +23,7 @@ class _IndexPageState extends State<IndexPage> {
 
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) {
-          return CallPage();
+          return CallPage(channelName: _channelController.text.toString());
         }
       ));
     }
