@@ -18,7 +18,7 @@ class _CallPageState extends State<CallPage> {
 
   void _initAgoraRtcEngine() {
     AgoraRtcEngine.create("140e572f7a4a4bcaa359155b2a9ccec0");
-    AgoraRtcEngine.enableAudio();
+    AgoraRtcEngine.enableVideo();
   }
 
   void _addAgoraEventHandlers() {
