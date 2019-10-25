@@ -76,10 +76,20 @@ class _CallPageState extends State<CallPage> {
   void initAgora() {
     _initAgoraRtcEngine();
     _addAgoraEventHandlers();
-    AgoraRtcEngine.enableWebSdkInteroperability(true);
+    // 可能是支持web端的交互吧
+    AgoraRtcEngine.enableWebSdkInteroperability(false);
     // 参数不能少
     AgoraRtcEngine.setParameters('{\"che.video.lowBitRateStreamParameter\":{\"width\":320,\"height\":180,\"frameRate\":15,\"bitRate\":140}}');
     AgoraRtcEngine.joinChannel(null, widget.channelName, null, 0);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _users.clear();
+    AgoraRtcEngine.leaveChannel();
+    AgoraRtcEngine.destroy();
+    super.dispose();
   }
 
   @override
