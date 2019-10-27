@@ -284,6 +284,28 @@ class _CallPageState extends State<CallPage> {
     AgoraRtcEngine.switchCamera();
   }
 
+  // 右上角小窗口
+  Widget _smallWindow() {
+    if(_users.length == 1) {
+      return GestureDetector(
+        onDoubleTap: () {
+        },
+        child: Align(
+          alignment: Alignment.topRight,
+          child: Container(
+            margin: EdgeInsets.only(top: 40, right: 40),
+            width: 110,
+            height: 150,
+            color: Colors.blueAccent,
+          ),
+        ),
+      );
+    } else {
+      return Container();
+    }
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -292,6 +314,7 @@ class _CallPageState extends State<CallPage> {
         child: Stack(
           children: <Widget>[
             _viewRows(),
+            _smallWindow(),
             _panel(),
             _toolbar(),
           ],
