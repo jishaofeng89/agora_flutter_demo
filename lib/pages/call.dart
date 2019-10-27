@@ -141,7 +141,7 @@ class _CallPageState extends State<CallPage> {
       return Container(
         child: Column(
           children: <Widget>[
-            _expandedVideoRow([views[0]]),
+            // _expandedVideoRow([views[0]]),
             _expandedVideoRow([views[1]]),
           ],
         ),
@@ -286,6 +286,7 @@ class _CallPageState extends State<CallPage> {
 
   // 右上角小窗口
   Widget _smallWindow() {
+    List<Widget> views = _getRenderViews();
     if(_users.length == 1) {
       return GestureDetector(
         onDoubleTap: () {
@@ -296,7 +297,11 @@ class _CallPageState extends State<CallPage> {
             margin: EdgeInsets.only(top: 40, right: 40),
             width: 110,
             height: 150,
-            color: Colors.blueAccent,
+            child: Column(
+              children: <Widget>[
+                _expandedVideoRow([views[0]]),
+              ],
+            ),
           ),
         ),
       );
