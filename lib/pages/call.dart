@@ -15,6 +15,7 @@ class _CallPageState extends State<CallPage> {
   static final _users = List<int>();
   final _messages = <String>[];
   bool muted = false;
+  bool taped = false;
 
   void _initAgoraRtcEngine() {
     AgoraRtcEngine.create("140e572f7a4a4bcaa359155b2a9ccec0");
@@ -142,7 +143,7 @@ class _CallPageState extends State<CallPage> {
         child: Column(
           children: <Widget>[
             // _expandedVideoRow([views[0]]),
-            _expandedVideoRow([views[1]]),
+            _expandedVideoRow([views[taped ? 0 : 1]]),
           ],
         ),
       );
@@ -290,6 +291,13 @@ class _CallPageState extends State<CallPage> {
     if(_users.length == 1) {
       return GestureDetector(
         onDoubleTap: () {
+          print('被点击');
+          setState(() {
+            taped = !taped;
+          });
+        },
+        onTap: () {
+          print('被单击');
         },
         child: Align(
           alignment: Alignment.topRight,
@@ -299,7 +307,7 @@ class _CallPageState extends State<CallPage> {
             height: 150,
             child: Column(
               children: <Widget>[
-                _expandedVideoRow([views[0]]),
+                _expandedVideoRow([views[taped ? 1 : 0]]),
               ],
             ),
           ),
