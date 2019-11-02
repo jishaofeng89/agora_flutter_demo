@@ -297,6 +297,9 @@ class _CallPageState extends State<CallPage> {
           });
         },
         onTap: () {
+          // 手势竞争，外面点击会被里面点击给替换了
+          // _expandedVideoRow里面已经包含单击了
+          // 追溯进去已经是_nativeView了，暂时使用双击
           print('被单击');
         },
         child: Align(
