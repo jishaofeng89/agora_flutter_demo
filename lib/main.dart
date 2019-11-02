@@ -1,4 +1,4 @@
-import 'package:agora_flutter_demo/pages/IndexPage.dart';
+import 'package:agora_flutter_demo/home.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: MyHomePage(title: 'Flutter Demo Home Page'),
-      home: IndexPage(),
+      home: HomePage(),
     );
   }
 }
