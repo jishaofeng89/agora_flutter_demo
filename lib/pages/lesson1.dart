@@ -41,7 +41,52 @@ class _Lession1PageState extends State<Lession1Page> {
 
   // 挂断，静音等工具栏
   Widget _toolbar() {
-    return Container();
+    return Container(
+      alignment: Alignment.bottomCenter,
+      // 内边距
+      padding: EdgeInsets.symmetric(vertical: 48),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          RawMaterialButton(
+            onPressed: () {},
+            child: Icon(
+              Icons.mic_off,
+              color: Colors.blueAccent,
+              size: 20,
+            ),
+            shape: CircleBorder(),
+            elevation: 2,
+            fillColor: Colors.white,
+            padding: EdgeInsets.all(12),
+          ),
+          RawMaterialButton(
+            onPressed: () {},
+            child: Icon(
+              Icons.call_end,
+              color: Colors.white,
+              size: 35,
+            ),
+            shape: CircleBorder(),
+            elevation: 2.0,
+            fillColor: Colors.redAccent,
+            padding: EdgeInsets.all(15),
+          ),
+          RawMaterialButton(
+            onPressed: () {},
+            child: Icon(
+              Icons.switch_camera,
+              color: Colors.blueAccent,
+              size: 20,
+            ),
+            shape: CircleBorder(),
+            elevation: 2,
+            fillColor: Colors.white,
+            padding: EdgeInsets.all(12),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -55,6 +100,7 @@ class _Lession1PageState extends State<Lession1Page> {
           children: <Widget>[
             _viewRows(),
             _smallWindow(),
+            _toolbar(),
           ],
         ),
       ),
