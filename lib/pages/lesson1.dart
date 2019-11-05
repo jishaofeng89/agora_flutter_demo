@@ -43,8 +43,8 @@ class _Lession1PageState extends State<Lession1Page> {
   Widget _toolbar() {
     return Container(
       alignment: Alignment.bottomCenter,
-      // 内边距
-      padding: EdgeInsets.symmetric(vertical: 48),
+      // 距离底部的距离
+      padding: EdgeInsets.only(bottom: 48),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -58,6 +58,7 @@ class _Lession1PageState extends State<Lession1Page> {
             shape: CircleBorder(),
             elevation: 2,
             fillColor: Colors.white,
+            // 在这个圆形的形状里面相当于直径
             padding: EdgeInsets.all(12),
           ),
           RawMaterialButton(
