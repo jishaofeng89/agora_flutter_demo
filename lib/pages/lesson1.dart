@@ -62,7 +62,9 @@ class _Lession1PageState extends State<Lession1Page> {
             padding: EdgeInsets.all(12),
           ),
           RawMaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
             child: Icon(
               Icons.call_end,
               color: Colors.white,
