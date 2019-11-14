@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final List lessons = [Lession1Page(), Lession2Page()];
+  final List lessons = [Lession1Page(), Lession2Page(conversationId: '123',)];
 
   final List lessonsTitle = ['1.布局', '2.声网视频通话接入'];
 

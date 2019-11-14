@@ -1,13 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 
 class Lession2Page extends StatefulWidget {
-  Lession2Page({Key key}) : super(key: key);
+
+  // 我这里定义为ConversationId
+  final String conversationId;
+
+  Lession2Page({Key key, this.conversationId}) : super(key: key);
 
   @override
   _Lession2PageState createState() => _Lession2PageState();
 }
 
 class _Lession2PageState extends State<Lession2Page> {
+
+  void _initAgoraRtcEngine() {
+    AgoraRtcEngine.create("140e572f7a4a4bcaa359155b2a9ccec0");
+    AgoraRtcEngine.enableVideo();
+  }
+
+  void _addAgoraEventHandlers() {
+
+    AgoraRtcEngine.onError = (dynamic code) {};
+
+    AgoraRtcEngine.onJoinChannelSuccess = (String channel, int uid, int elapsed) {};
+
+    AgoraRtcEngine.onLeaveChannel = () {};
+
+    AgoraRtcEngine.onUserJoined = (int uid, int elapsed) {};
+
+    AgoraRtcEngine.onUserOffline = (int uid, int reason) {};
+
+    AgoraRtcEngine.onFirstRemoteVideoFrame = (int uid, int width, int height, int elapse) {};
+    
+  }
+
+  void initAgora() {
+    _initAgoraRtcEngine();
+    _addAgoraEventHandlers();
+    // 支持web端的交互吧
+    AgoraRtcEngine.enableWebSdkInteroperability(false);
+    AgoraRtcEngine.setParameters('{\"che.video.lowBitRateStreamParameter\":{\"width\":320,\"height\":180,\"frameRate\":15,\"bitRate\":140}}');
+    AgoraRtcEngine.joinChannel(null, widget.conversationId, null, 0);
+  }
+
+  @override
+  void initState() { 
+    super.initState();
+    initAgora();
+  }
 
   // 最里面的通话的视图
   Widget _viewRows() {
