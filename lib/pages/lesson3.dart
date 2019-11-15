@@ -14,6 +14,8 @@ class Lesson3Page extends StatefulWidget {
 
 class _Lesson3PageState extends State<Lesson3Page> {
 
+  static final _users = List<int>();
+
   void _initAgoraRtcEngine() {
     AgoraRtcEngine.create("140e572f7a4a4bcaa359155b2a9ccec0");
     AgoraRtcEngine.enableVideo();
@@ -25,11 +27,23 @@ class _Lesson3PageState extends State<Lesson3Page> {
 
     AgoraRtcEngine.onJoinChannelSuccess = (String channel, int uid, int elapsed) {};
 
-    AgoraRtcEngine.onLeaveChannel = () {};
+    AgoraRtcEngine.onLeaveChannel = () {
+      setState(() {
+        _users.clear();
+      });
+    };
 
-    AgoraRtcEngine.onUserJoined = (int uid, int elapsed) {};
+    AgoraRtcEngine.onUserJoined = (int uid, int elapsed) {
+      setState(() {
+        _users.add(uid);
+      });
+    };
 
-    AgoraRtcEngine.onUserOffline = (int uid, int reason) {};
+    AgoraRtcEngine.onUserOffline = (int uid, int reason) {
+      setState(() {
+        _users.remove(uid);
+      });
+    };
 
     AgoraRtcEngine.onFirstRemoteVideoFrame = (int uid, int width, int height, int elapse) {};
     
@@ -48,6 +62,16 @@ class _Lesson3PageState extends State<Lesson3Page> {
   void initState() { 
     super.initState();
     initAgora();
+  }
+
+  List<Widget> _getRenderViews() {
+    List<Widget> list = [AgoraRenderWidget(0, local: true, preview: true,)];
+
+    _users.forEach((uid){
+      list.add(AgoraRenderWidget(uid));
+    });
+
+    return list;
   }
 
   // 最里面的通话的视图
