@@ -1,5 +1,6 @@
 import 'package:agora_flutter_demo/pages/lesson1.dart';
 import 'package:agora_flutter_demo/pages/lesson2.dart';
+import 'package:agora_flutter_demo/pages/lesson3.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,9 +12,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  final List lessons = [Lession1Page(), Lession2Page(conversationId: '123',)];
+  final List lessons = [
+    Lesson1Page(), 
+    Lesson2Page(conversationId: '123',),
+    Lesson3Page(conversationId: '123',),
+  ];
 
-  final List lessonsTitle = ['1.布局', '2.声网视频通话接入'];
+  final List lessonsTitle = [
+    '1.布局', 
+    '2.声网视频通话接入（一）',
+    '3.声网视频通话接入（二）',
+  ];
 
   @override
   Widget build(BuildContext context) {

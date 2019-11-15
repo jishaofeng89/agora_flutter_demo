@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 
-class Lession2Page extends StatefulWidget {
+class Lesson2Page extends StatefulWidget {
 
   // 我这里定义为ConversationId
   final String conversationId;
 
-  Lession2Page({Key key, this.conversationId}) : super(key: key);
+  Lesson2Page({Key key, this.conversationId}) : super(key: key);
 
   @override
-  _Lession2PageState createState() => _Lession2PageState();
+  _Lesson2PageState createState() => _Lesson2PageState();
 }
 
-class _Lession2PageState extends State<Lession2Page> {
+class _Lesson2PageState extends State<Lesson2Page> {
 
   void _initAgoraRtcEngine() {
     AgoraRtcEngine.create("140e572f7a4a4bcaa359155b2a9ccec0");
